@@ -1,0 +1,8 @@
+{% load account %}{% user_display user as user_display %}{% load i18n %}{% autoescape off %}{% blocktrans with site_name='titktak' site_domain='' %}
+Вы получили этот email, потому что  {{ user_display }}  попытался зарегистрировать свой логин на данный mail.
+
+Чтобы, активировать пройдите по ссылке  {{ activate_url }}
+{% endblocktrans %}
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %} Удачного дня!
+{% endblocktrans %}
+{% endautoescape %}

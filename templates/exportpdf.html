@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{{ message }}
+{% for object in object_list %}
+
+
+
+    {% if object.image %}
+        <img src="{{ object.image.path }}" width="200px" height="200px">
+    {% endif %}
+    <br>
+    Title: {{ object.title }}
+
+    <br>
+    Text: {{ object.text }}
+
+    <br>
+    Author: {{ object.author }}
+    <br>
+    Created: {{ object.created|date:"m d, Y" }}
+    <br>
+    Category: {{ object.category }}
+    <br>
+
+    <br>
+    <br>
+    <hr>
+{% endfor %}
+</body>
+</html>

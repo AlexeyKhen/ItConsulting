@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+
+
+
+ {% if  not user.is_authenticated %}
+        <p style="margin-left: 50px; margin-top: 50px">Чтобы управлять постами вам нужно войти или
+            зарегестрироваться.</p>
+    {% else %}
+
+
+
+    <div class="card" style="width: 30rem; margin: 50px 50px">
+        {% if object.image %}
+            <img src="{{ object.image.url }}" class="card-img-top" alt="...">
+        {% endif %}
+        <div style='text-align: center' class="card-body">
+            <h5 class="card-title">{{ object.title }}</h5>
+            <hr>
+
+            <p class="card-text"> {{ object.text }}</p>
+            <hr>
+            <div style="text-align: left"><small class="card-text"> Пост
+                написан: {{ object.author }}</small>
+                <br>
+                <small class="card-text"> Опубликован: {{ object.created }}</small>
+                <br>
+                <small class="card-text"> Категория : {{ object.category }}</small></div>
+        </div>
+    </div>
+
+{% endif %}
+
+
+{% endblock %}
+</body>
+</html>

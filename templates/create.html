@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+ <h4> Создайте свой пост</h4>
+
+    <form style="margin-top: 50px" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <button class="btn btn-success" type="submit"> Создать </button>
+    </form>
+
+
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+<h3> Список всех постов: </h3>
+
+
+        {% for object in object_list %}
+
+
+            <div class="card" style="width: 20rem; margin: 50px auto auto">
+
+                {% if object.image %}
+                    <img src="{{ object.image.url }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div style='text-align: center' class="card-body">
+                    <h5 class="card-title">{{ object.title }}</h5>
+                    <hr>
+
+                    <p class="card-text"> {{ object.text }}</p>
+                    <hr>
+
+                    <div style="text-align: left"><small class="card-text"> Пост
+                        написан: {{ object.author }}</small>
+                        <br>
+                        <small class="card-text"> Опубликован: {{ object.created }}</small>
+                        <br>
+                        <small class="card-text"> Категория : {{ object.category }}</small></div>
+                    <br>
+
+                </div>
+            </div>
+
+        {% empty %}
+            <h3> Пока никто не создал посты </h3>
+
+        {% endfor %}
+
+
+{% endblock %}
+</body>
+</html>
