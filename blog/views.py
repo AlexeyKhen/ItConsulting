@@ -65,16 +65,11 @@ class PostUpdate(UpdateView):
 def exportPdf(request):
     first_data = f"{request.GET['first_data_year']}-{request.GET['first_data_month']}-{request.GET['first_data_day']} 00:00:00"
     second_data = f"{request.GET['second_data_year']}-{request.GET['second_data_month']}-{request.GET['second_data_day']} 23:59:59"
-    object_list = Post.objects.filter(created__range=[first_data, second_data])
+    object_list = Post.objects.filter(created__range=[first_data, second_data]).filter(author=request.GET['user'])
 
     if object_list.exists():
         template_path = 'exportpdf.html'
-        context = {'object_list': object_list,
-                   'title': 'Название:',
-                   'text': 'Текст:',
-                   'created': " Дата: ",
-                   'author': 'Автор:',
-                   'category': "Категория:"}
+        context = {'object_list': object_list}
         response = HttpResponse(content_type='application/pdf')
         response['Content-Disposition'] = 'filename="report.pdf"'
         template = get_template(template_path)
@@ -84,5 +79,5 @@ def exportPdf(request):
         if pisa_status.err:
             return HttpResponse('We had some errors <pre>' + html + '</pre>')
         return response
-    context = {"message": "Вы не выбрали файлы попробуйте выбрать другую дату"}
+    context = {"message": "Постов в данном промежутке, от данного пользователь нет. Попробуйте выбрать другую дату"}
     return render(request, 'exportpdf.html', context)

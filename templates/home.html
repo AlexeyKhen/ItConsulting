@@ -20,7 +20,7 @@
                 <button type="button" class="btn btn-success">Создать</button>
             </a>
         </p>
-        <p style="margin-left: 50px"> Экспортируйте свои посты </p>
+        <p style="margin-left: 50px"> Экспортируйтепосты </p>
         <div style="margin-left: 50px">
             <p>
                 <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
@@ -34,15 +34,19 @@
                     <form action="{% url 'exportPdf' %}">
                         <div class="form-row">
                             <div class="form-group col-md-2">
-                                <label for="exampleInputEmail1"> Начало </label>
+                                <label> Начало периода </label>
                                 {{ form.first_data }}
                             </div>
                             <div class="form-group col-md-2">
-                                <label for="exampleInputPassword1">Конец</label>
+                                <label>Конец периода</label>
                                 {{ form.second_data }}
                             </div>
+                            <div class="form-group col-md-2">
+                                <label>Пользователь</label>
+                                {{ form.user }}
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Создать пдф </button>
+                        <button type="submit" class="btn btn-primary">Создать пдф</button>
                     </form>
                 </div>
             </div>

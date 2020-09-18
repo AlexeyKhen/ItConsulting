@@ -112,7 +112,7 @@ LOGIN_REDIRECT_URL = '/'
 
 LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Etc/GMT-6'
 
 USE_I18N = True
 

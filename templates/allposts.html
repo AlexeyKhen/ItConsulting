@@ -8,8 +8,9 @@
 </head>
 <body>
 {% block content %}
+    <br>
+<p> Чтобы экспортировать посты, перейдите в раздел <a href="{% url 'home' %}">своих постов</a></p><br>
 <h3> Список всех постов: </h3>
-
 
         {% for object in object_list %}
 
